@@ -6,7 +6,7 @@
 body {
   background-color: #cae8ff;
   margin: 0; 
-  transition: background-color 0.3s, color 0.3s;
+  transition: background-color 0.31s, color 0.3s;
 }
 .dark-mode {
   /* Styles for dark mode */
@@ -607,7 +607,6 @@ p {
   transition: all 0.1s;
   line-height: 10px;
  }
-
 /* Media query for smaller screens */
 @media only screen and (max-width: 750px) {
   .tnav {

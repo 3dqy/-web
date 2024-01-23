@@ -1,0 +1,374 @@
+@font-face {
+    font-family: 'Amsterdam One';
+    src: url('/AmsterdamOne-eZ12l.ttf') format('woff2'),
+}
+
+body {
+  background-color: #cae8ff;
+  margin: 0; 
+  transition: background-color 0.3s, color 0.3s;
+}
+.dark-mode {
+  /* Styles for dark mode */
+  background-color: #050A30;
+  color: #cae8ff;
+}
+.tnav {
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+#darkLogo {
+    height: 140px;
+    width: auto;
+    margin-right: -90px;
+}
+#lightLogo{    
+  height: 160px;
+  width: auto;
+  margin-right: 60px;
+  margin-left: 130px;
+}
+.at {
+    color: #050A30; font-family: Amsterdam One; font-size: larger; margin: 0;
+}
+.dark-mode .at{
+  color: #cae8ff; font-size: large; margin-top: 10px;
+}
+
+.dark-mode-toggle {
+  margin-left: 450px;
+  margin-right: -390px;
+  --btn-default-bg: transparent;
+  --btn-padding: 15px 21px;
+  --btn-hover-bg: rgb(0, 0, 0);
+  --btn-transition: .3s;
+  --btn-letter-spacing: .1rem;
+  --btn-animation-duration: 1.2s;
+  --hover-btn-color: beige;
+  --default-btn-color: rgb(0, 148, 76);
+}
+
+.dark-mode-toggle {
+  box-sizing: border-box;
+  padding: var(--btn-padding);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--default-btn-color);
+  font: var(--font-weight) var(--font-size) var(--font-family);
+  background: var(--btn-default-bg);
+  border: none;
+  cursor: pointer;
+  transition: var(--btn-transition);
+  overflow: hidden;
+  box-shadow: var(--btn-shadow);
+}
+
+.dark-mode-toggle span {
+  font-size: 23px;
+  font-weight: bolder;
+  letter-spacing: var(--btn-letter-spacing);
+  transition: var(--btn-transition);
+  box-sizing: border-box;
+  position: relative;
+  background: inherit;
+}
+
+.dark-mode-toggle span::before {
+  box-sizing: border-box;
+  position: absolute;
+  content: "";
+  background: inherit;
+}
+
+.dark-mode-toggle:hover, .ui-btn:focus {
+  background: var(--btn-hover-bg);
+}
+
+.dark-mode-toggle:hover span, .ui-btn:focus span {
+  color: var(--hover-btn-color);
+}
+
+.dark-mode-toggle:hover span::before, .ui-btn:focus span::before {
+  animation: chitchat linear both var(--btn-animation-duration);
+}
+
+@keyframes chitchat {
+  0% {
+    content: "#";
+  }
+
+  5% {
+    content: ".";
+  }
+
+  10% {
+    content: "^{";
+  }
+
+  15% {
+    content: "-!";
+  }
+
+  20% {
+    content: "#$_";
+  }
+
+  25% {
+    content: "№:0";
+  }
+
+  30% {
+    content: "#{+.";
+  }
+
+  35% {
+    content: "@}-?";
+  }
+
+  40% {
+    content: "?{4@%";
+  }
+
+  45% {
+    content: "=.,^!";
+  }
+
+  50% {
+    content: "?2@%";
+  }
+
+  55% {
+    content: "\;1}]";
+  }
+
+  60% {
+    content: "?{%:%";
+    right: 0;
+  }
+
+  65% {
+    content: "|{f[4";
+    right: 0;
+  }
+
+  70% {
+    content: "{4%0%";
+    right: 0;
+  }
+
+  75% {
+    content: "'1_0<";
+    right: 0;
+  }
+
+  80% {
+    content: "{0%";
+    right: 0;
+  }
+
+  85% {
+    content: "]>'";
+    right: 0;
+  }
+
+  90% {
+    content: "4";
+    right: 0;
+  }
+
+  95% {
+    content: "2";
+    right: 0;
+  }
+
+  100% {
+    content: "";
+    right: 0;
+  }
+}
+
+.sign {
+    margin-left: 400px;
+}
+
+.cta {
+    position: relative;
+    margin: auto;
+    padding: 9px 12px;
+    transition: all 0.2s ease;
+    border: none;
+    background: none;
+    cursor: pointer;
+  }
+  
+  .cta:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    border-radius: 50px;
+    background: #2d0202;
+    width: 30px;
+    height: 35px;
+    transition: all 0.3s ease;
+  }
+  
+  .cta span {
+    position: relative;
+    font-family: "Ubuntu", sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: #ffffff;
+  }
+  .cta:hover span {
+    position: relative;
+    font-family: "Ubuntu", sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: #050A30;
+  }
+  
+  .cta svg {
+    position: relative;
+    top: 0;
+    margin-left: 5px;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke: #050A30;
+    stroke-width: 2;
+    transform: translateX(-5px);
+    transition: all 0.3s ease;
+  }
+  
+  .cta:hover:before {
+    width: 100%;
+    background: #cae8ff;
+  }
+  
+  .cta:hover svg {
+    transform: translateX(0);
+  }
+  
+  .cta:active {
+    transform: scale(0.95);
+  }
+  
+.topnav {
+    overflow: hidden;
+    background-color: transparent;
+    margin-left: 170px;
+} 
+
+/* Style the links inside the navigation bar */
+.topnav a {
+    float: left;
+    display: block;
+    color: #050A30;
+    text-align: center;
+    padding: 24px 26px;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: 700;
+    text-decoration: underline 1px;
+    text-underline-offset: 10px;
+}  
+
+.dark-mode .topnav a{
+  color: #cae8ff;
+}
+
+.topnav a:hover {
+    transition: 0.5s;
+    color: #050A30;
+    font-size: 25px;
+}
+.dark-mode .topnav a:hover{
+  transition: 0.5s;
+  color: #cae8ff;
+  font-size: 25px;
+}
+.major-sheet {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.subject-button {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+.whatsapp-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #25D366; /* WhatsApp green color */
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+.whatsapp-button:hover {
+  background-color: #006315;
+}
+
+
+
+
+
+@media only screen and (max-width: 750px) {
+    .tnav {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    #darkLogo {
+      margin-left: -120px;
+    }
+    #lightLogo {
+      margin-left: 20px;
+    }
+    .at {
+      margin-left: 60px;
+      margin-top: -15px;
+      margin-bottom: 30px;
+    }
+    .dark-mode-toggle {
+      margin-left: 60%;
+      margin-top: -33%;
+    }
+    .sign {
+      margin-left: 290px;
+      margin-top: 50px;
+      margin-bottom: 30px;
+    }
+      .topnav {
+          overflow: hidden;
+          margin: 0;
+      }
+      .topnav a {
+          float: none;
+          display: block;
+          text-align: center;
+          padding: 14px 16px;
+          text-decoration: none;
+          text-decoration: underline;
+          font-size: 20px;
+          text-underline-offset: 10px;
+      }
+}  
