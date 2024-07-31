@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/stylesheets/archive.css">
+<link rel="shortcut icon" href="/images/logokw.png" type="image/x-icon">
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+<style>
+  @font-face {
+    font-family: 'Amsterdam One';
+    src: url('/AmsterdamOne-eZ12l.ttf') format('woff2'),
+  }
+  body {
+    background-color: #cae8ff;
+    color: #050A30;
+    margin: 0; 
+    transition: background-color 0.31s, color 0.3s;
+  }   
+  body.dark-mode {
+    background-color: #050A30;
+    color: #cae8ff;
+    margin: 0; 
+    transition: background-color 0.31s, color 0.3s;
+  }
+  
+  /* header */
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 10%; padding-left: 10%;
+  }
+  .dm{
+  color: #050A30; font-size: 2vmax; 
+  }
+  .dark-mode .dm{
+  color: #cae8ff;
+  }
+  .container h2 {
+   color: #050A30; font-family: Amsterdam One; font-size: 1.8vmax; margin-left: -43%; margin-right: 200px;
+  }
+  .logo img {
+    max-width: 50%;
+    height: auto;
+    margin-left: -5%;
+  }
+  .logo2 img{
+    max-width: 80%;
+    margin-left: -100%; 
+    justify-content: left;
+  }
+  .dark-mode-toggle {
+    display: flex;
+    align-items: center;
+    margin-left: -20%;
+  }
+  .dark-mode-toggle input {
+    margin-right: 5px;
+  }  
+  /* navbar */
+  .topnav {
+      overflow: hidden;
+      background-color: transparent;
+      margin-top: 2.7%;
+  } 
+  .topnav a {
+      display: flexbox;
+      color: #050A30;
+      padding: 0.1% 1.9%;
+      text-decoration: underline 2.5px;
+      font-size: 2.5vmax;
+      font-weight: 700;
+      text-underline-offset: 3px;
+  } 
+  .dark-mode .topnav a{
+    color: #cae8ff;
+  }
+  
+  .topnav a:hover {
+      transition: 0.25s;
+      color: #050A30;
+      font-size: 2.75vmax;
+      text-decoration: overline 3px;
+  }
+  .dark-mode .topnav a:hover{
+    transition: 0.25s;
+    color: #cae8ff;
+    font-size: 2.75vmax;
+  }
+  /* page content */
+  .contain{
+    margin-top: 4%;
+    cursor:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='40' height='48' viewport='0 0 100 100' style='fill:black;font-size:24px;'><text y='50%'>🚀</text></svg>") 16 0,auto; /*!emojicursor.app*/
+  }
+  
+  div2 {
+    padding-right: 2%;
+    padding-left: 2%;
+    transition: --num 2.7s;
+    counter-set: num var(--num);
+    font: 700 2.2vmax system-ui;
+  }
+  div2::after {
+    content: counter(num);
+  }
+  div2 {
+  border: 2px solid #050A30;
+  border-radius: 10px; 
+  background-color: #b10e0e; 
+  box-shadow: 0 12px 22px rgba(0, 0, 0, 0.1); 
+  padding: 1%;
+}
+
+  .div2a:hover {
+    --num: 179;
+  }
+  .div2b:hover {
+    --num: 54;
+  }
+  .div2c:hover {
+    --num: 5;
+  }
+
+  .cardf{
+    display: flex;
+  }
+  .card {
+    margin-left: 5%;
+    margin-top: 7%;
+    margin-bottom: 3%;
+    width: 25vw;
+    height: 30vw;
+    background-color: #ffffff;
+    border-radius: 10px;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    box-shadow: 0 0 0 5px #050A30;
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  .dark-mode .card:hover {
+    box-shadow: 0 8px 16px #cae8ff;
+  }
+  .dark-mode .card {
+    box-shadow: 0 0 0 5px #cae8ff;
+  }
+
+  .card video{
+    max-width: 70%;
+  }
+  .card img{
+    max-width: 100%;
+  }
+  .card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px #050A30;
+  }
+  
+  .card__content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 10%;
+    box-sizing: border-box;
+    background-color: #f2f2f2;
+    transform: rotateX(-90deg);
+    transform-origin: bottom;
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  
+  .card:hover .card__content {
+    transform: rotateX(0deg);
+  }
+  
+  .card__title {
+    margin: 0;
+    font-size: 1.6vmax;
+    color: #333;
+    font-weight: 700;
+  }
+  .card__description {
+    margin: 7px 0 0;
+    font-size: 1.3vmax;
+    color: #050A30;
+    line-height: 1;
+  }
+
+  @property --num {
+    syntax: "<integer>";
+    initial-value: 0;
+    inherits: false;
+  }
+
+  /* Footer */
+footer{
+    background-color: #050A30;
+    padding: 5%;
+    text-align: center;
+    display: flex;
+    }
+    .dark-mode footer{
+    background-color: #cae8ff;
+    }
+    .footer-lists {
+    display: column;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    }
+    .footer-lists img{
+    max-width: 20%;
+    }
+    .footer-lists2 {
+    display: column;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-left: -10%;
+    }
+    h2{
+    color: #cae8ff;
+    }
+    .dark-mode h2 {
+    color: #050A30;
+    }
+    .card2 {
+    width: fit-content;
+    height: fit-content;
+    background-color: rgb(238, 238, 238);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 25px 25px;
+    gap: 20px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.055);
+    }
+    .socialContainer {
+    width: 52px;
+    height: 52px;
+    border-radius: 5px;
+    background-color: rgb(44, 44, 44);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition-duration: 0.3s;
+    }
+    /* instagram*/
+    .containerOne:hover {
+    background-color: #d62976;
+    transition-duration: 0.3s;
+    }
+    /*X*/
+    .containerTwo:hover {
+    background-color: #000000;
+    transition-duration: 0.3s;
+    }
+    /* discord*/
+    .containerThree:hover {
+    background-color: #3d0697;
+    transition-duration: 0.3s;
+    }
+    /* Youtube*/
+    .containerFour:hover {
+    background-color: red;
+    transition-duration: 0.3s;
+    }
+    
+    .socialContainer:active {
+    transform: scale(0.9);
+    transition-duration: 0.3s;
+    }
+    .socialSvg {
+    width: 17px;
+    }
+    
+    .socialSvg path {
+    fill: rgb(255, 255, 255);
+    }
+    
+    .socialContainer:hover .socialSvg {
+    animation: slide-in-top 0.3s both;
+    }
+    
+    @keyframes slide-in-top {
+    0% {
+      transform: translateY(-50px);
+      opacity: 0;
+    }
+    
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    }
+
+    #scrollToTopBtn {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background-color: #fff;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      font-size: 16px;
+        text-transform: uppercase;
+        border-radius: 8px;
+        color: #b10e0e;
+        text-shadow: none;
+        cursor: pointer;
+        box-shadow: transparent;
+        border: 1px solid #b10e0e;
+        transition: 0.5s ease;
+        user-select: none;
+      }
+  
+      #scrollToTopBtn:hover {
+        color: #ffffff;
+        background: #b10e0e;
+        border: 1px solid #b10e0e;
+        text-shadow: 0 0 5px #ffffff, 0 0 10px #ffffff, 0 0 20px #ffffff;
+        box-shadow: 0 0 5px #b10e0e, 0 0 20px #b10e0e, 0 0 50px #b10e0e,
+          0 0 100px #b10e0e;
+     } 
+    button2{
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 10px 20px;
+      background-color: #fff;
+      border: 1px solid #25D366;
+      width: 7.8em;
+      height: 1.2em;
+      transition: 0.5s;
+      font-size: 17px;
+      border-radius: 0.4em;
+      }
+      
+      button2 a {
+      position: absolute;
+      top: 0.4em;
+      left: 1.15em;
+      margin: 0;
+      padding: 0;
+      transition: .5s;
+      color: #0a9a3f;
+      text-decoration: underline;
+      }
+      
+      button2 svg {
+      position: absolute;
+      top: 0.45em;
+      right: 0.5em;
+      margin: 0;
+      padding: 0;
+      opacity: 0;
+      transition: 0.5s;
+      height: 1em;
+      fill: #fff
+      }
+      
+      button2:hover a{
+      left: 0.5em;
+      color: #fff
+      }
+      
+      button2:hover svg {
+      opacity: 1;
+      }
+      
+      button2:hover {
+      background-color: #25D366;
+      }
+    .footer-lists2 h2{
+      font-size: 129%; 
+    }
+
+
+  @media only screen and (max-width: 650px) {
+    .logo2 img{
+      max-width: 105%;
+      margin-left: -100%;
+      margin-top: 20px; 
+    }  
+    .cardf {
+      display: block;
+    }
+    .card {
+      margin-left: 5%;
+      margin-top: 7%;
+      margin-bottom: 3%;
+      width: 59vw;
+      height: 70vw;
+      background-color: #ffffff;
+      border-radius: 10px;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      box-shadow: 0 0 0 5px #050A30;
+      transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .card__title {
+      margin: 0;
+      font-size: 2.2vmax;
+      color: #333;
+      font-weight: 700;
+    }
+    .card__description {
+      margin: 7px 0 0;
+      font-size: 1.7vmax;
+      color: #050A30;
+      line-height: 1.2;
+    }
+    .container h2{
+      font-size: 0.75em; margin-right: 100px;
+    }
+    .tnav {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .dark-mode-toggle {
+      font-size: 0.45em;
+      margin-right: -7px;
+    }
+    .sign {
+      font-size: 0.4em;
+    }
+    .topnav {
+      overflow: hidden;
+      margin: 0;
+    }
+    .topnav a {
+      float: none;
+      display: block;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: underline;
+      font-size: 20px;
+      text-underline-offset: 10px;
+    }
+    .topnav a:hover{
+      text-decoration: none;
+    }
+
+    div2{
+        display: block;
+        margin-top: 5%;
+        width: 200px;
+    }
+  
+    footer {
+      flex-direction: column;
+      text-align: center;
+    }  
+    .footer-lists img{
+      max-width: 60%;
+    }
+    .footer-lists2{
+      margin-left: 0%;
+    }
+  
+  }
+  
+</style>
+
+<!-- Top navigation bar -->
+</head><body>
+<!-- header -->
+<div class="background">
+    <div class="container">
+        <div class="logo">
+            <a href="/main"><img style="margin-top: 30px;" src="{{ url_for('static', filename='images/logokw.png') }}" alt="Logo"></a>
+        </div>
+        <div class="logo2"><img src="{{ url_for('static', filename='images/at.png') }}" ></div>
+        <!-- <h2 class="at">Advancing Technology</h2> -->
+        <div class="dark-mode-toggle">
+            <label class="dm" for="dark-mode">Dark Mode</label>
+            <input type="checkbox" id="dark-mode">
+        </div>
+        <!-- <div class="register-signin">
+             <button><span class="text"><a style="text-decoration: none; color: aliceblue;" href="/sign_in/templates/index.html" target="_blank" rel="noopener noreferrer">Sign In</a></span></button>
+            <button><span class="text"><a style="text-decoration: none; color: aliceblue;" href="/sign_in/templates/index.html" target="_blank" rel="noopener noreferrer">Register</a></span></button> 
+        </div> -->
+    </div>
+  </div>
+
+<!-- nav bar -->
+
+<div class="topnav">  
+      <center><a href="/main">Home</a>
+      <a href="/electric">Uni Stuff</a>
+      <a href="/events">Events</a>
+      <a href="/archive">Archive</a>
+      <a href="https://forms.office.com/r/Jxxh2Zge1q" target="_blank">Join Us</a>
+      <a href="https://www.ieee.org/" target="_blank" rel="noopener">Global IEEE</a></center>
+      </div>
+
+    <!-- Page content -->
+
+    <div style="display: flex; justify-content: center;">
+      <h1 style="margin-top: 10%;font-size: 3.3vmax; font-family:cursive;">Statistics</h1>
+      <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
+      <dotlottie-player src="https://lottie.host/93c911d0-71c5-4157-b1e8-a8f87ac89cb5/C4w9QzkBNz.json" background="transparent" speed="1" style="width: 21vmax; height: 15vmax; margin-top: 5%;" loop autoplay></dotlottie-player>
+      <h1 style="margin-top: 10%;font-size: 3.3vmax; font-family:cursive;">احصائيات</h1>
+    </div>
+    <center>
+    <div class="contain">
+      <h1 style="font-size: 2.5vmax; margin-bottom: 4%;">Hover to discover</h1>
+      <div2 class="div2a">Total Members= </div2>
+      <div2 class="div2b">Active Members= </div2>
+      <div2 class="div2c">anything= </div2>
+    </div>
+    </center>
+
+
+
+    <div style="display: flex; justify-content: center;">
+      <h1 style="margin-top: 10%; font-family: cursive; font-size: 3.3vmax; margin-top: 12%;">Archive</h1>
+      <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
+      <dotlottie-player src="https://lottie.host/af220a97-7a67-4b8a-af5d-3d80f4585bb5/tku1MJ8REL.json" background="transparent" speed="1" style="width: 15vmax; height: 15vmax; margin-top: 7%;" loop autoplay></dotlottie-player>
+      <h1 style="margin-top: 10%; font-family: cursive; font-size: 3.3vmax; margin-top: 12%;">الأرشيف</h1>    
+    </div>
+    <center><div class="cardf">
+      <div class="card">
+        <video autoplay muted src="{{ url_for('static', filename='images/program.mp4') }}" ></video>        
+        <div class="card__content">
+          <p class="card__title">IEEE Winter Program</p>
+          <p class="card__description">
+            The IEEE_KSC has held their yearly winter training program, taking place from 21/01/2024 till 25/01/2024.
+            The program was divided into 5 days visiting different facilities. 
+            A number of active students have participated in the program with high spirit. Through the trip, we have gained knowledge about topics related to the generation , distribution, and control of kuwait’s electricity. In addition to that, we have been introduced to the production process of switchgear units and  power transformers
+            The program provided a rich environment of socializing, knowledge and experience.          </p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="{{ url_for('static', filename='images/at.png') }}" >
+        <div class="card__content">
+          <p class="card__title">Al-Doha Power station</p>
+          <p class="card__description">A brilliant visit to Al-Doha Power station, Special Thanks to Eng. Zeyad Alhafnawy for his time</p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="{{ url_for('static', filename='images/at.png') }}" >
+        <div class="card__content">
+          <p class="card__title">National Control Center</p>
+          <p class="card__description">A brilliant visit to the National Control center, Special Thanks to Eng. Abdulaziz almutairi for his time</p>
+        </div>
+      </div>
+    </div></center>
+
+
+    <!-- footer -->
+  <footer class="footer">
+    <div class="footer-lists">
+      <img src="{{ url_for('static', filename='images/ieeekwt.jpg') }}" >
+      <center><div style="margin-top: 30px;" class="card2">
+        <a class="socialContainer containerOne" href="https://www.instagram.com/ieee_ksc?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">
+          <svg viewBox="0 0 16 16" class="socialSvg instagramSvg">
+            <path
+              d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"
+            ></path>
+          </svg>
+        </a>
+      
+        <a class="socialContainer containerTwo" href="https://twitter.com/IEEE_KSC" target="_blank">
+          <svg viewBox="0 0 50 50" class="socialSvg XSvg">
+            <path d="M 5.9199219 6 L 20.582031 27.375 L 6.2304688 44 L 9.4101562 44 L 21.986328 29.421875 L 31.986328 44 L 44 44 L 28.681641 21.669922 L 42.199219 6 L 39.029297 6 L 27.275391 19.617188 L 17.933594 6 L 5.9199219 6 z M 9.7167969 8 L 16.880859 8 L 40.203125 42 L 33.039062 42 L 9.7167969 8 z">
+            </path>
+          </svg>
+      
+        <a class="socialContainer containerThree" href="#" target="_blank">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" class="socialSvg discordSvg" >
+             <path d="M40,12c0,0-4.585-3.588-10-4l-0.488,0.976C34.408,10.174,36.654,11.891,39,14c-4.045-2.065-8.039-4-15-4s-10.955,1.935-15,4c2.346-2.109,5.018-4.015,9.488-5.024L18,8c-5.681,0.537-10,4-10,4s-5.121,7.425-6,22c5.162,5.953,13,6,13,6l1.639-2.185C13.857,36.848,10.715,35.121,8,32c3.238,2.45,8.125,5,16,5s12.762-2.55,16-5c-2.715,3.121-5.857,4.848-8.639,5.815L33,40c0,0,7.838-0.047,13-6C45.121,19.425,40,12,40,12z M17.5,30c-1.933,0-3.5-1.791-3.5-4c0-2.209,1.567-4,3.5-4s3.5,1.791,3.5,4C21,28.209,19.433,30,17.5,30z M30.5,30c-1.933,0-3.5-1.791-3.5-4c0-2.209,1.567-4,3.5-4s3.5,1.791,3.5,4C34,28.209,32.433,30,30.5,30z">
+             </path> 
+            </svg>
+        </a>
+        
+        <a class="socialContainer containerFour" href="https://www.youtube.com/@ieeekuwaitstudentchapter-i3414" target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" class="socialSvg youtubeSvg" viewBox="0 0 50 50"> 
+            <path d="M 44.898438 14.5 C 44.5 12.300781 42.601563 10.699219 40.398438 10.199219 C 37.101563 9.5 31 9 24.398438 9 C 17.800781 9 11.601563 9.5 8.300781 10.199219 C 6.101563 10.699219 4.199219 12.199219 3.800781 14.5 C 3.398438 17 3 20.5 3 25 C 3 29.5 3.398438 33 3.898438 35.5 C 4.300781 37.699219 6.199219 39.300781 8.398438 39.800781 C 11.898438 40.5 17.898438 41 24.5 41 C 31.101563 41 37.101563 40.5 40.601563 39.800781 C 42.800781 39.300781 44.699219 37.800781 45.101563 35.5 C 45.5 33 46 29.398438 46.101563 25 C 45.898438 20.5 45.398438 17 44.898438 14.5 Z M 19 32 L 19 18 L 31.199219 25 Z"></path>
+            </svg>
+        </a>
+      </div></center>
+      <button2>
+        <a href="https://chat.whatsapp.com/IDKInCkEINX2Em4IfGURjr" target="_blank" rel="noopener">Got any questions?</a>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="whatsapp-button" viewBox="0 0 16 16">
+          <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"></path>
+        </svg>
+      </button2>
+      
+      <button id="scrollToTopBtn" title="Go to top">Go to Top</button>    
+  </div>
+  <div class="footer-lists2">
+     <script src="https://unpkg.com/@dotlottie/player-component@latest/dist/dotlottie-player.mjs" type="module"></script> 
+      <center><dotlottie-player src="https://lottie.host/37f632c6-6aee-4809-b6fb-51a093494105/qCZcz1ZqXr.json" background="transparent" speed="1" style="width: 65%; height: 65%; margin-top: -3%;" loop autoplay></dotlottie-player></center>
+      <h2 >Designed & Coded by Outhman Aldaher</h2>
+      <h2 >IEEE KSC © 2024 (All rights reserved)</h2>
+  </div>
+  </footer>
+  
+  <script src="/js/archive.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+  <script>
+    const darkModeToggle = document.getElementById('dark-mode');
+    const body = document.body;
+
+    darkModeToggle.addEventListener('change', () => {
+        body.classList.toggle('dark-mode');
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+        var scrollToTopBtn = document.getElementById("scrollToTopBtn");
+    
+        // Show/hide the button based on scroll position
+        window.addEventListener("scroll", function() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                scrollToTopBtn.style.display = "block";
+            } else {
+                scrollToTopBtn.style.display = "none";
+            }
+        });
+    
+        // Scroll to the top when the button is clicked
+        scrollToTopBtn.addEventListener("click", function() {
+            document.body.scrollTop = 0;  // For Safari
+            document.documentElement.scrollTop = 0;  // For Chrome, Firefox, IE, and Opera
+        });
+    });
+  </script>
+  
+  </body>
+  </html>
+  

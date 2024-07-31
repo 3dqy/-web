@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Provide your data</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #950606;
+            text-align: center;
+            margin: 50px;
+        }
+
+        h1 {
+            color: #ffffff;
+        }
+
+        form {
+            max-width: 300px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #4caf50;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #80efe2;
+        }
+
+    </style>
+</head>
+<body>    
+    <h1>Welcome to our Website , Please write down your data before starting</h1>
+    <form action="/submit" method="post">
+        <label for="id">University ID:</label>
+        <input type="text" id="id" name="id" required><br>
+
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br>
+
+        <input type="submit" value="Submit">
+    </form>    
+    <img style="max-width: 30%;"  src="{{ url_for('static', filename='images/ieeekwt.jpg') }}">
+
+</body>
+</html>
